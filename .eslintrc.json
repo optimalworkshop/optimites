@@ -1,0 +1,70 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier", "react-hooks", "@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/prettier"
+  ],
+  "settings": {
+    "react": {
+      "version": "16.12.0"
+    },
+    "import/resolver": {
+      "typescript": []
+    },
+    "linkComponents": [{ "name": "Link", "linkAttribute": "to" }]
+  },
+  "globals": {
+    "process": true
+  },
+  "rules": {
+    "max-len": [
+      "warn",
+      {
+        "code": 100,
+        "tabWidth": 2,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    // "@typescript-eslint/no-unused-vars": [
+    //   "warn",
+    //   {
+    //     "ignoreRestSiblings": true,
+    //     "argsIgnorePattern": "^_",
+    //     "varsIgnorePattern": "^(React$|_)"
+    //   }
+    // ],
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-var-requires": "off",
+    "no-console": "warn",
+    "prettier/prettier": "warn",
+    "testing-library/no-render-in-setup": [
+      "error",
+      { "allowTestingFrameworkSetupHook": "beforeEach" }
+    ]
+  }
+}

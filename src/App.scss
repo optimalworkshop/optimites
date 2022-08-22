@@ -1,0 +1,16 @@
+.app {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: "preview controls";
+
+  .preview {
+    grid-area: preview;
+    position: relative;
+  }
+
+  .controls {
+    grid-area: controls;
+  }
+}

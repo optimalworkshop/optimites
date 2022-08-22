@@ -1,0 +1,40 @@
+button {
+  position: relative;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  cursor: pointer;
+
+  &[aria-pressed] {
+    box-shadow: 0 0 0 0.25rem var(--black);
+  }
+}
+
+.controls {
+  button {
+    aspect-ratio: 1;
+    padding: 0.5rem;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
+
+    button {
+      path {
+        fill: var(--blue);
+      }
+    }
+  }
+
+  &__color {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+}

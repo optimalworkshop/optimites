@@ -1,0 +1,34 @@
+:root {
+  font-family: "Obviously", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --black: hsl(197, 97%, 13%);
+  --white: hsl(0, 0%, 100%);
+
+  --blue: hsl(196, 88%, 70%);
+  --yellow: hsl(48, 100%, 69%);
+  --teal: hsl(174, 71%, 45%);
+  --orange: hsl(34, 100%, 50%);
+  --pink: hsl(0, 79%, 82%);
+  --indigo: hsl(196, 43%, 55%);
+  --green: hsl(73, 65%, 64%);
+
+  --body-fill: var(--yellow);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  --outline: var(--black);
+}
