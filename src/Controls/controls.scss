@@ -203,6 +203,16 @@ input[type="range"] {
       }
     }
   }
+
+  .dash-button {
+    path {
+      fill: none;
+      stroke: var(--controls-foreground);
+      stroke-width: 50;
+      stroke-dasharray: 0.02 0.03;
+      stroke-linecap: round;
+    }
+  }
 }
 
 .position-control {

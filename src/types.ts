@@ -103,3 +103,17 @@ export type Face = {
   rotation: number;
   flipped: boolean;
 };
+
+export enum BackgroundColor {
+  'None' = 'none',
+  'Yellow' = 'yellow',
+  'Lime' = 'lime',
+  'Lemon' = 'lemon',
+  'Mint' = 'mint',
+  'Blue' = 'blue',
+}
+
+export type Background = {
+  color: BackgroundColor;
+  dashed: boolean;
+};

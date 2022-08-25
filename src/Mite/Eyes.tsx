@@ -13,6 +13,7 @@ export const EyeShapes: { [key in EyeShape]: ReactElement } = {
       <path
         className="eyes__outline outline"
         d="M-39,-51c0,-0 -74,94 -167,94c-92,0 -167,-94 -167,-94c-0,-0 74,-94 167,-94c92,-0 167,94 167,94ZM390,-105c-0,-0 -64,81 -143,81c-79,0 -143,-81 -143,-81c-0,-0 64,-81 143,-81c79,-0 143,81 143,81Z"
+        style={{ fill: 'var(--white)' }}
       />
       <path
         className="eyes__fill fill"
@@ -42,7 +43,8 @@ export const EyeShapes: { [key in EyeShape]: ReactElement } = {
     <>
       <path
         className="eyes__outline outline"
-        d="M-168,-33c-4,24 -27,40 -51,35c-24,-4 -40,-27 -35,-51c4,-24 27,-40 51,-35c24,4 40,27 35,51M371,-64c-4,24 -27,40 -51,35c-24,-4 -40,-27 -35,-51c4,-24 27,-40 51,-35c24,4 40,27 35,51M-88,-38c0,-0 -74,81 -162,77c-87,-3 -155,-90 -155,-90c-0,0 74,-81 162,-77c87,3 155,90 155,90Z"
+        d="M-88,-38c0,-0 -74,81 -162,77c-87,-3 -155,-90 -155,-90c-0,0 74,-81 162,-77c87,3 155,90 155,90Z"
+        style={{ fill: 'var(--white)' }}
       />
       <path
         className="eyes__fill fill"
@@ -54,7 +56,12 @@ export const EyeShapes: { [key in EyeShape]: ReactElement } = {
     <>
       <path
         className="eyes__outline outline"
-        d="M-71,-41c0,0 -49,-95 -116,-102c-67,-7 -141,76 -141,76c0,0 63,107 141,101c77,-6 116,-75 116,-75ZM348,-74c-0,-0 -47,-96 -115,-104c-67,-8 -142,74 -142,74"
+        d="M-71,-41c0,0 -49,-95 -116,-102c-67,-7 -141,76 -141,76c0,0 63,107 141,101c77,-6 116,-75 116,-75Z"
+        style={{ fill: 'var(--white)' }}
+      />
+      <path
+        className="eyes__outline outline"
+        d="M348,-74c-0,-0 -47,-96 -115,-104c-67,-8 -142,74 -142,74"
       />
       <path
         className="eyes__fill fill"
@@ -79,6 +86,7 @@ export const EyeShapes: { [key in EyeShape]: ReactElement } = {
       <path
         className="eyes__outline outline"
         d="M-337,-38c0,-0 26,-65 121,-89c94,-23 129,65 129,65c0,0 -40,52 -125,67c-85,14 -125,-43 -125,-43ZM111,-106c-0,0 42,-56 140,-54c97,1 107,96 107,96c-0,-0 -52,40 -138,32c-85,-7 -109,-74 -109,-74Z"
+        style={{ fill: 'var(--white)' }}
       />
       <path
         className="eyes__fill fill"
@@ -91,6 +99,7 @@ export const EyeShapes: { [key in EyeShape]: ReactElement } = {
       <path
         className="eyes__outline outline"
         d="M-362,-45c0,0 35,-103 128,-119c122,-20 158,80 158,80c-0,-0 -29,72 -137,86c-108,13 -148,-47 -148,-47ZM116,-109c0,0 34,-95 113,-105c112,-14 131,72 131,72c-0,0 -25,61 -117,73c-92,11 -127,-40 -127,-40Z"
+        style={{ fill: 'var(--white)' }}
       />
       <path
         className="eyes__fill fill"

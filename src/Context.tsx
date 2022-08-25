@@ -1,7 +1,22 @@
 import { createContext } from 'react';
-import { Body, Color, EyebrowShape, EyeShape, Face, MouthShape, NoseShape, Shape } from './types';
+import {
+  Background,
+  BackgroundColor,
+  Body,
+  Color,
+  EyebrowShape,
+  EyeShape,
+  Face,
+  MouthShape,
+  NoseShape,
+  Shape,
+} from './types';
 
 type ContextShape = {
+  background: Background & {
+    setColor: (color: BackgroundColor) => void;
+    setDashed: (dashed: boolean) => void;
+  };
   body: Body & {
     setShape: (shape: Shape) => void;
     setColor: (color: Color) => void;
@@ -22,6 +37,12 @@ type ContextShape = {
 };
 
 export default createContext<ContextShape>({
+  background: {
+    color: BackgroundColor.Lemon,
+    dashed: false,
+    setColor: () => void 0,
+    setDashed: () => void 0,
+  },
   body: {
     shape: Shape.Egg,
     color: Color.Blue,

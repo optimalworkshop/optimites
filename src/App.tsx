@@ -3,7 +3,15 @@ import Mite from './Mite';
 import './App.scss';
 import Context from './Context';
 import Controls from './Controls';
-import { Color, EyebrowShape, EyeShape, MouthShape, NoseShape, Shape } from './types';
+import {
+  BackgroundColor,
+  Color,
+  EyebrowShape,
+  EyeShape,
+  MouthShape,
+  NoseShape,
+  Shape,
+} from './types';
 import Preview from './Preview';
 
 function App() {
@@ -20,10 +28,18 @@ function App() {
   const [scale, setScale] = useState<number>(0.6);
   const [rotation, setRotation] = useState<number>(0);
   const [flipped, setFlipped] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState<BackgroundColor>(BackgroundColor.Lime);
+  const [dashed, setDashed] = useState(false);
 
   return (
     <Context.Provider
       value={{
+        background: {
+          color: backgroundColor,
+          dashed: dashed,
+          setColor: setBackgroundColor,
+          setDashed: setDashed,
+        },
         body: {
           shape: bodyShape,
           color: bodyColor,

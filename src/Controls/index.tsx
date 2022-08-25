@@ -6,6 +6,7 @@ import { Shape } from '../types';
 import Tab from './Tab';
 import Face from './Face';
 import Position from './Position';
+import Background from './Background';
 
 const outline: CSSProperties = {
   stroke: 'var(--controls-foreground)',
@@ -45,14 +46,27 @@ const Controls: React.FC = () => {
             cx={100}
             cy={-100}
             r={250}
-            style={{ ...outline, strokeDasharray: '0.01 0.04' }}
+            style={{ ...outline, strokeDasharray: '0 0' }}
             pathLength={1}
+          />
+        </Tab>
+        <Tab id="background" label="Background" selected={tab === 'background'} onClick={setTab}>
+          <path
+            d="M249,-359C340,-301,394,-167,385,-44C377,79,296,308,200,380C103,452,-85,458,-192,388C-299,318,-448,91,-442,-38C-436,-168,-274,-336,-158,-390C-43,-443,158,-417,249,-359C340,-301,394,-167,385,-44"
+            fill="var(--blue)"
+            opacity={0.25}
+          />
+          <path
+            d="M157,-391C261,-324,365,-111,378,4C391,120,332,250,233,307C134,364,-124,397,-215,346C-307,294,-310,121,-314,-2C-319,-125,-319,-330,-241,-395C-162,-459,54,-457,157,-391C261,-324,365,-111,378,4"
+            fill="var(--blue)"
+            opacity={0.75}
           />
         </Tab>
       </div>
       <Body active={tab === 'body'} />
       <Face active={tab === 'face'} />
       <Position active={tab === 'position'} />
+      <Background active={tab === 'background'} />
     </aside>
   );
 };
