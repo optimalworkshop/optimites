@@ -1,20 +1,16 @@
 import React from 'react';
 import { Color, Shape } from '../types';
 import Body from './Body';
+import { Body as BodyProps } from '../types';
 
 type MiteProps = {
-  body: {
-    shape: Shape;
-    color: Color;
-  };
+  body: BodyProps;
 };
 
 const Mite: React.FC<MiteProps> = ({ body }) => {
   return (
     <>
-      <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
-        <Body {...body} />
-      </svg>
+      <Body {...body} />
     </>
   );
 };

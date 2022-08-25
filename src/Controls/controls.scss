@@ -7,27 +7,178 @@ button {
   background: transparent;
   cursor: pointer;
 
+  svg {
+    display: block;
+  }
+
   &[aria-pressed] {
-    box-shadow: 0 0 0 0.25rem var(--black);
+    box-shadow: 0 0 0 0.25rem var(--controls-foreground);
+    background-color: var(--white);
+  }
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 15rem;
+
+  &::-webkit-slider-runnable-track {
+    background: var(--controls-foreground);
+    height: 0.25rem;
+    border-radius: 0.125rem;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -0.625rem; /* Centers thumb on the track */
+    background-color: var(--controls-background);
+    box-shadow: inset 0 0 0 0.25rem var(--controls-foreground);
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+  }
+
+  &::-moz-range-track {
+    background: var(--controls-foreground);
+    height: 0.25rem;
+    border-radius: 0.125rem;
+  }
+
+  &::-moz-range-thumb {
+    border: none;
+    background-color: var(--controls-background);
+    box-shadow: inset 0 0 0 0.25rem var(--controls-foreground);
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
   }
 }
 
 .controls {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: var(--controls-background);
+  min-height: 0;
+  overflow: hidden;
+  border-left: 0.25rem solid var(--controls-foreground);
+
   button {
     aspect-ratio: 1;
     padding: 0.5rem;
   }
 
-  &__body {
+  [role="tablist"] {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+    border-bottom: 0.25rem solid var(--controls-foreground);
+    gap: 0.5rem;
+    padding: 1rem 1rem 0;
+    box-shadow: 0 0.5rem 2rem 1rem var(--controls-background);
+  }
+
+  [role="tab"] {
+    flex: 1;
+    width: auto;
+    height: auto;
+    aspect-ratio: 1;
+    border: 0.25rem solid transparent;
+    border-bottom-width: 0;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-bottom: -0.25rem;
+    opacity: 0.5;
+
+    &[aria-selected] {
+      border-color: var(--controls-foreground);
+      background-color: var(--controls-background);
+      opacity: 1;
+    }
+  }
+
+  [role="tabpanel"] {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+
+    &[aria-hidden] {
+      display: none;
+    }
+  }
+
+  &__shape {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
     padding: 0.5rem;
 
     button {
+      width: auto;
+      height: auto;
+
       path {
         fill: var(--blue);
       }
+
+      .outline {
+        fill: none;
+        stroke: var(--controls-foreground);
+        stroke-width: 50;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .fill {
+        fill: var(--controls-foreground);
+      }
+    }
+
+    #controls__face > & {
+      grid-template-columns: repeat(5, 1fr);
+
+      button {
+        aspect-ratio: 3 / 2;
+        padding: 0;
+
+        svg {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 3 / 2;
+        }
+      }
+    }
+  }
+
+  &__offset,
+  &__gap {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+
+    svg {
+      flex: 0 0 auto;
+      width: 4rem;
+      height: 4rem;
+
+      path {
+        stroke: var(--controls-foreground);
+        stroke-width: 64;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
     }
   }
 
@@ -36,5 +187,94 @@ button {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
     padding: 0.5rem;
+
+    button {
+      width: auto;
+      height: auto;
+    }
+  }
+
+  .flip-button {
+    path {
+      fill: var(--controls-foreground);
+
+      &:first-child {
+        opacity: 0.25;
+      }
+    }
+  }
+}
+
+.position-control {
+  svg {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+
+  &__body {
+    fill: var(--controls-foreground);
+    opacity: 0.25;
+  }
+
+  &__face {
+    stroke: var(--controls-foreground);
+    stroke-width: 25;
+    stroke-linecap: round;
+    fill: none;
+
+    circle {
+      fill: transparent;
+      stroke-dasharray: 0.02 0.03;
+      cursor: grab;
+    }
+  }
+
+  &__scale {
+    path {
+      fill: none;
+      stroke: transparent;
+      stroke-linecap: butt;
+    }
+
+    :nth-child(4n + 1) {
+      cursor: ns-resize;
+    }
+
+    :nth-child(4n + 2) {
+      cursor: nesw-resize;
+    }
+
+    :nth-child(4n + 3) {
+      cursor: ew-resize;
+    }
+
+    :nth-child(4n + 4) {
+      cursor: nwse-resize;
+    }
+  }
+
+  &__rotate {
+    path {
+      fill: none;
+      stroke: transparent;
+      stroke-linecap: butt;
+    }
+
+    :nth-child(4n + 1) {
+      cursor: ew-resize;
+    }
+
+    :nth-child(4n + 2) {
+      cursor: nwse-resize;
+    }
+
+    :nth-child(4n + 3) {
+      cursor: ns-resize;
+    }
+
+    :nth-child(4n + 4) {
+      cursor: nesw-resize;
+    }
   }
 }

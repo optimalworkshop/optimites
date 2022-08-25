@@ -1,14 +1,28 @@
+@keyframes move {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
 .preview {
+  position: relative;
+
   svg {
+    position: absolute;
+    inset: 0;
+    height: 100%;
     width: 100%;
-    aspect-ratio: 1;
 
     .outline {
       stroke: var(--outline);
-      stroke-width: 20;
       stroke-linecap: round;
       stroke-linejoin: round;
       fill: none;
+    }
+
+    .fill {
+      stroke: none;
+      fill: var(--outline);
     }
 
     .body {
@@ -16,10 +30,15 @@
         fill: var(--body-fill);
         transform: translate(-4%, -1%);
         transition: fill 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        offset-path: path("M-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0");
+        offset-rotate: 0deg;
+        animation: move 2s linear infinite;
       }
 
-      &__outline {
+      &__outline,
+      .leg {
         fill: none;
+        stroke-width: 20;
         stroke-dasharray: var(--array);
         stroke-dashoffset: var(--offset);
       }

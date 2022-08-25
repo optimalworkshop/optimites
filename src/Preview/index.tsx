@@ -7,7 +7,9 @@ const Preview = () => {
   const { body } = useContext(Context);
   return (
     <div className="preview">
-      <Mite body={body} />
+      <svg viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid meet">
+        <Mite body={body} />
+      </svg>
     </div>
   );
 };

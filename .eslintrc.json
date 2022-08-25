@@ -47,15 +47,14 @@
       }
     ],
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "off",
-    // "@typescript-eslint/no-unused-vars": [
-    //   "warn",
-    //   {
-    //     "ignoreRestSiblings": true,
-    //     "argsIgnorePattern": "^_",
-    //     "varsIgnorePattern": "^(React$|_)"
-    //   }
-    // ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^(React$|_)"
+      }
+    ],
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
