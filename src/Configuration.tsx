@@ -172,19 +172,30 @@ const useConfiguration = (
 
 const Configuration: React.FC<PropsWithChildren> = ({ children }) => {
   const { state, update, spec } = useConfiguration(
-    window.location.hash ? JSON.parse(atob(window.location.hash.replace(/^#?/, ''))) : {}
+    (() => {
+      try {
+        return window.location.hash
+          ? JSON.parse(atob(window.location.hash.replace(/^#?/, '')))
+          : {};
+      } catch (e) {
+        return {};
+      }
+    })()
   );
 
   const decodeHash = useCallback(() => {
-    const decoded = JSON.parse(atob(window.location.hash.replace(/^#?/, ''))) as Spec;
-    update(decoded);
+    try {
+      const decoded = JSON.parse(atob(window.location.hash.replace(/^#?/, ''))) as Spec;
+      update(decoded);
+    } catch (e) {
+      // ignore
+    }
   }, []);
 
   useEffect(() => {
     const hashChanged = () => {
       decodeHash();
     };
-    decodeHash();
     window.addEventListener('hashchange', hashChanged);
     return () => window.removeEventListener('hashchange', hashChanged);
   }, []);
