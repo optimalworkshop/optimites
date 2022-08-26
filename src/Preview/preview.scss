@@ -36,7 +36,8 @@
       }
 
       &__outline,
-      .leg {
+      .leg,
+      .arm {
         fill: none;
         stroke-width: 20;
         stroke-dasharray: var(--array);

@@ -8,6 +8,7 @@ import Face from './Face';
 import Position from './Position';
 import Background from './Background';
 import Options from './Options';
+import Arms from './Arms';
 
 const outline: CSSProperties = {
   stroke: 'var(--controls-foreground)',
@@ -51,6 +52,9 @@ const Controls: React.FC = () => {
             pathLength={1}
           />
         </Tab>
+        <Tab id="arms" label="Arms" selected={tab === 'arms'} onClick={setTab}>
+          <></>
+        </Tab>
         <Tab id="background" label="Background" selected={tab === 'background'} onClick={setTab}>
           <path
             d="M249,-359C340,-301,394,-167,385,-44C377,79,296,308,200,380C103,452,-85,458,-192,388C-299,318,-448,91,-442,-38C-436,-168,-274,-336,-158,-390C-43,-443,158,-417,249,-359C340,-301,394,-167,385,-44"
@@ -73,6 +77,7 @@ const Controls: React.FC = () => {
       <Body active={tab === 'body'} />
       <Face active={tab === 'face'} />
       <Position active={tab === 'position'} />
+      <Arms active={tab === 'arms'} />
       <Background active={tab === 'background'} />
       <Options active={tab === 'options'} />
     </aside>

@@ -1,8 +1,12 @@
-import React, { CSSProperties, useEffect, useRef } from 'react';
+import React, { CSSProperties, useContext, useEffect, useRef } from 'react';
 import anime from 'animejs';
 import { Color, Shape } from '../types';
 import Face from './Face';
 import Legs from './Legs';
+import Arm from './Arm';
+import Context from '../Context';
+
+type Offset = { x: number; y: number };
 
 export const Shapes: { [key in Shape]: string } = {
   [Shape.Egg]:
@@ -19,6 +23,33 @@ export const Shapes: { [key in Shape]: string } = {
     'M383,110C384,184 392,277 392,337C392,354 395,353 390,373C387,380 385,381 378,381C335,381 -16,373 -65,372C-105,370 -220,376 -351,378C-366,379 -381,383 -387,375C-393,367 -389,325 -389,302C-389,243 -390,27 -389,-62C-389,-159 -388,-246 -393,-345C-394,-353 -393,-363 -390,-367C-385,-373 -380,-373 -367,-373C-303,-374 -66,-367 43,-368C188,-370 318,-375 347,-380C362,-382 368,-382 375,-371C380,-365 380,-343 381,-328C382,-153 381,-78 383,110Z',
 };
 
+const ArmOffsets: { [key in Shape]: [Offset, Offset] } = {
+  [Shape.Egg]: [
+    { x: -325, y: 200 },
+    { x: 325, y: 200 },
+  ],
+  [Shape.Trapezoid]: [
+    { x: -325, y: 200 },
+    { x: 455, y: 200 },
+  ],
+  [Shape.Triangle]: [
+    { x: -325, y: 200 },
+    { x: 375, y: 195 },
+  ],
+  [Shape.Circle]: [
+    { x: -250, y: 200 },
+    { x: 300, y: 200 },
+  ],
+  [Shape.Rectangle]: [
+    { x: -325, y: 200 },
+    { x: 432, y: 100 },
+  ],
+  [Shape.Square]: [
+    { x: -325, y: 200 },
+    { x: 386, y: 200 },
+  ],
+};
+
 const Body: React.FC<{ shape: Shape; color: Color; gap: number; offset: number }> = ({
   shape,
   color,
@@ -28,7 +59,10 @@ const Body: React.FC<{ shape: Shape; color: Color; gap: number; offset: number }
   const shapeWas = useRef<Shape>(shape);
 
   const outlineRef = useRef<SVGPathElement>(null);
+
   const fillRef = useRef<SVGPathElement>(null);
+
+  const { leftArm, rightArm } = useContext(Context);
 
   useEffect(() => {
     anime({
@@ -37,6 +71,8 @@ const Body: React.FC<{ shape: Shape; color: Color; gap: number; offset: number }
       easing: 'spring(1, 90, 7, 0)',
     });
   }, [shape]);
+
+  const [rightArmOffset, leftArmOffset] = ArmOffsets[shape];
 
   return (
     <g className="body">
@@ -61,6 +97,8 @@ const Body: React.FC<{ shape: Shape; color: Color; gap: number; offset: number }
         />
         <Face />
       </Legs>
+      <Arm {...leftArmOffset} {...leftArm} />
+      <Arm {...rightArmOffset} {...rightArm} />
     </g>
   );
 };

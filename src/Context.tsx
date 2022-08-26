@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import {
+  Arm,
   Background,
   BackgroundColor,
   Body,
@@ -9,8 +10,16 @@ import {
   Face,
   MouthShape,
   NoseShape,
+  Point,
   Shape,
 } from './types';
+
+type ArmShape = Arm & {
+  setControl1: (point: Point) => void;
+  setControl2: (point: Point) => void;
+  setHand: (point: Point) => void;
+  setRotation: (rotation: number) => void;
+};
 
 export type ContextShape = {
   background: Background & {
@@ -34,6 +43,8 @@ export type ContextShape = {
     setRotation: (scale: number) => void;
     setFlipped: (flipped: boolean) => void;
   };
+  leftArm: ArmShape;
+  rightArm: ArmShape;
   scramble: () => void;
 };
 
@@ -81,6 +92,26 @@ export default createContext<ContextShape>({
     setScale: () => void 0,
     setRotation: () => void 0,
     setFlipped: () => void 0,
+  },
+  leftArm: {
+    control1: { x: -100, y: 300 },
+    control2: { x: -200, y: 300 },
+    hand: { x: -300, y: 0 },
+    rotation: -25,
+    setControl1: () => void 0,
+    setControl2: () => void 0,
+    setHand: () => void 0,
+    setRotation: () => void 0,
+  },
+  rightArm: {
+    control1: { x: 100, y: 300 },
+    control2: { x: 200, y: 300 },
+    hand: { x: 300, y: 0 },
+    rotation: 25,
+    setControl1: () => void 0,
+    setControl2: () => void 0,
+    setHand: () => void 0,
+    setRotation: () => void 0,
   },
   scramble: () => void 0,
 });

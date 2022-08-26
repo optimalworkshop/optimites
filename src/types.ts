@@ -1,3 +1,8 @@
+export type Point = {
+  x: number;
+  y: number;
+};
+
 export enum Shape {
   'Egg' = 'egg',
   'Trapezoid' = 'trapezoid',
@@ -118,8 +123,17 @@ export type Background = {
   dashed: boolean;
 };
 
+export type Arm = {
+  control1: Point;
+  control2: Point;
+  hand: Point;
+  rotation: number;
+};
+
 export type Spec = {
   body: Body;
   face: Face;
   background: Background;
+  leftArm: Arm;
+  rightArm: Arm;
 };

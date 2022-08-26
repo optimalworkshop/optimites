@@ -16,6 +16,7 @@ import {
   EyeShape,
   MouthShape,
   NoseShape,
+  Point,
   Shape,
   Spec,
 } from './types';
@@ -69,6 +70,18 @@ const useConfiguration = (
           rotation: 0,
           flipped: false,
         },
+        leftArm: {
+          control1: { x: -100, y: 300 },
+          control2: { x: -200, y: 300 },
+          hand: { x: -300, y: 0 },
+          rotation: -25,
+        },
+        rightArm: {
+          control1: { x: 100, y: 300 },
+          control2: { x: 200, y: 300 },
+          hand: { x: 300, y: 0 },
+          rotation: 25,
+        },
       },
       initial
     )
@@ -101,10 +114,51 @@ const useConfiguration = (
   const setScale = useCallback((scale: number) => dispatch({ face: { scale } }), []);
   const setRotation = useCallback((rotation: number) => dispatch({ face: { rotation } }), []);
   const setFlipped = useCallback((flipped: boolean) => dispatch({ face: { flipped } }), []);
+  const setLeftArmControl1 = useCallback(
+    (point: Point) => dispatch({ leftArm: { control1: point } }),
+    []
+  );
+  const setLeftArmControl2 = useCallback(
+    (point: Point) => dispatch({ leftArm: { control2: point } }),
+    []
+  );
+  const setLeftArmHand = useCallback((point: Point) => dispatch({ leftArm: { hand: point } }), []);
+  const setLeftArmRotation = useCallback(
+    (rotation: number) => dispatch({ leftArm: { rotation } }),
+    []
+  );
+  const setRightArmControl1 = useCallback(
+    (point: Point) => dispatch({ rightArm: { control1: point } }),
+    []
+  );
+  const setRightArmControl2 = useCallback(
+    (point: Point) => dispatch({ rightArm: { control2: point } }),
+    []
+  );
+  const setRightArmHand = useCallback(
+    (point: Point) => dispatch({ rightArm: { hand: point } }),
+    []
+  );
+  const setRightArmRotation = useCallback(
+    (rotation: number) => dispatch({ rightArm: { rotation } }),
+    []
+  );
 
   const scramble = useCallback(() => {
     const d = Math.sqrt(Math.random() * 40000);
     const a = Math.sqrt(Math.random() * Math.PI) * (Math.floor(Math.random() * 2) - 1);
+
+    const randomArm = (d: -1 | 1) => {
+      const x = Math.random() * 800 - 400;
+      const y = Math.random() * 400 - 200;
+
+      return {
+        rotation: (Math.random() * 180 - 90) * d,
+        control1: { x: x / 3, y },
+        control2: { x: (x * 2) / 3, y },
+        hand: { x, y: 0 },
+      };
+    };
 
     dispatch({
       background: {
@@ -135,6 +189,8 @@ const useConfiguration = (
         scale: Math.random() * 0.4 + 0.4,
         rotation: Math.sqrt((Math.random() * Math.PI) / 4) * (Math.floor(Math.random() * 2) - 1),
       },
+      leftArm: randomArm(-1),
+      rightArm: randomArm(1),
     });
   }, []);
 
@@ -161,6 +217,18 @@ const useConfiguration = (
           setScale,
           setRotation,
           setFlipped,
+        },
+        leftArm: {
+          setControl1: setLeftArmControl1,
+          setControl2: setLeftArmControl2,
+          setHand: setLeftArmHand,
+          setRotation: setLeftArmRotation,
+        },
+        rightArm: {
+          setControl1: setRightArmControl1,
+          setControl2: setRightArmControl2,
+          setHand: setRightArmHand,
+          setRotation: setRightArmRotation,
         },
         scramble,
       }),
