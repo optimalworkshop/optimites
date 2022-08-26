@@ -12,7 +12,7 @@ import {
   Shape,
 } from './types';
 
-type ContextShape = {
+export type ContextShape = {
   background: Background & {
     setColor: (color: BackgroundColor) => void;
     setDashed: (dashed: boolean) => void;

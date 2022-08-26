@@ -117,3 +117,9 @@ export type Background = {
   color: BackgroundColor;
   dashed: boolean;
 };
+
+export type Spec = {
+  body: Body;
+  face: Face;
+  background: Background;
+};

@@ -115,7 +115,7 @@ input[type="range"] {
   &__shape {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    gap: 1rem;
     padding: 0.5rem;
 
     button {
@@ -185,7 +185,7 @@ input[type="range"] {
   &__color {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
+    gap: 1rem;
     padding: 0.5rem;
 
     button {

@@ -19,8 +19,6 @@ const Background: React.FC<{ active: boolean }> = ({ active }) => {
         {Object.entries(BackgroundColor).map(([key, value]) => (
           <ColorButton key={key} color={value} />
         ))}
-      </div>
-      <div className="controls__shape">
         <DashButton />
       </div>
     </div>
