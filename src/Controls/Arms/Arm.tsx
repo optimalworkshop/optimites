@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, ChangeEvent } from 'react';
 import Context from '../../Context';
 
 const Arm: React.FC<{ side: 'left' | 'right' }> = ({ side }) => {
@@ -21,7 +21,7 @@ const Arm: React.FC<{ side: 'left' | 'right' }> = ({ side }) => {
   const y = control1.y;
 
   const xChanged = useCallback(
-    (e) => {
+    (e: ChangeEvent<HTMLInputElement>) => {
       const d = parseInt(e.target.value) * direction;
       setHand({ x: d, y: 0 });
       setControl1({ x: d / 3, y });
@@ -31,7 +31,7 @@ const Arm: React.FC<{ side: 'left' | 'right' }> = ({ side }) => {
   );
 
   const yChanged = useCallback(
-    (e) => {
+    (e: ChangeEvent<HTMLInputElement>) => {
       const d = parseInt(e.target.value);
       setControl1({ x: x / 3, y: d });
       setControl2({ x: (x * 2) / 3, y: d });
