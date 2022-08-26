@@ -236,6 +236,20 @@ input[type="range"] {
     height: auto !important;
     aspect-ratio: 1;
   }
+
+  fieldset {
+    margin: 0 0 1rem;
+    border: 0;
+
+    legend {
+      display: none;
+    }
+
+    input {
+      width: 100%;
+      margin: 0 0 0.5rem;
+    }
+  }
 }
 
 .position-control {

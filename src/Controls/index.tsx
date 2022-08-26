@@ -53,7 +53,8 @@ const Controls: React.FC = () => {
           />
         </Tab>
         <Tab id="arms" label="Arms" selected={tab === 'arms'} onClick={setTab}>
-          <></>
+          <path d="M-301,-313c0,0 -148,392 -29,495c118,103 320,-118 320,-118" style={outline} />
+          <path d="M326,-301c0,-0 165,303 76,419c-89,116 -326,-136 -326,-136" style={outline} />
         </Tab>
         <Tab id="background" label="Background" selected={tab === 'background'} onClick={setTab}>
           <path
