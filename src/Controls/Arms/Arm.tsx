@@ -33,8 +33,8 @@ const Arm: React.FC<{ side: 'left' | 'right' }> = ({ side }) => {
   const yChanged = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const d = parseInt(e.target.value);
-      setControl1({ x: x / 3, y: d });
-      setControl2({ x: (x * 2) / 3, y: d });
+      setControl1({ x: (x / 3) * direction, y: d });
+      setControl2({ x: ((x * 2) / 3) * direction, y: d });
     },
     [x]
   );
