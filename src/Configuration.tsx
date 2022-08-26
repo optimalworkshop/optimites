@@ -7,7 +7,7 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { merge } from 'lodash-es';
+import { merge, sample } from 'lodash-es';
 import Context, { ContextShape } from './Context';
 import {
   BackgroundColor,
@@ -23,6 +23,10 @@ import {
 type Subset<K> = {
   [attr in keyof K]?: K[attr] extends object ? Subset<K[attr]> : K[attr];
 };
+
+function randomFrom<T>(choices: { [key: string]: T }): T {
+  return choices[Object.keys(choices)[Math.floor(Math.random() * Object.keys(choices).length)]];
+}
 
 const useConfiguration = (
   initial: Subset<Spec> = {}
@@ -98,6 +102,42 @@ const useConfiguration = (
   const setRotation = useCallback((rotation: number) => dispatch({ face: { rotation } }), []);
   const setFlipped = useCallback((flipped: boolean) => dispatch({ face: { flipped } }), []);
 
+  const scramble = useCallback(() => {
+    const d = Math.sqrt(Math.random() * 40000);
+    const a = Math.sqrt(Math.random() * Math.PI) * (Math.floor(Math.random() * 2) - 1);
+
+    dispatch({
+      background: {
+        color: randomFrom(BackgroundColor),
+        dashed: sample([false, false, true]),
+      },
+      body: {
+        shape: randomFrom(Shape),
+        color: randomFrom(Color),
+        gap: Math.random() * 20,
+        offset: Math.random() * 100,
+      },
+      face: {
+        eyebrows: {
+          shape: randomFrom(EyebrowShape),
+        },
+        eyes: {
+          shape: randomFrom(EyeShape),
+        },
+        nose: {
+          shape: randomFrom(NoseShape),
+        },
+        mouth: {
+          shape: randomFrom(MouthShape),
+        },
+        x: d * Math.cos(a),
+        y: d * Math.sin(a),
+        scale: Math.random() * 0.4 + 0.4,
+        rotation: Math.sqrt((Math.random() * Math.PI) / 4) * (Math.floor(Math.random() * 2) - 1),
+      },
+    });
+  }, []);
+
   const stateWithSetters = useMemo(
     () =>
       merge({}, state, {
@@ -122,6 +162,7 @@ const useConfiguration = (
           setRotation,
           setFlipped,
         },
+        scramble,
       }),
     [state]
   );

@@ -204,6 +204,22 @@ input[type="range"] {
     }
   }
 
+  .scramble-button {
+    path {
+      &:first-child {
+        stroke: var(--controls-foreground);
+        stroke-width: 50;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      &:last-child {
+        fill: var(--controls-foreground);
+      }
+    }
+  }
+
   .dash-button {
     path {
       fill: none;
@@ -212,6 +228,13 @@ input[type="range"] {
       stroke-dasharray: 0.02 0.03;
       stroke-linecap: round;
     }
+  }
+
+  canvas {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1;
   }
 }
 

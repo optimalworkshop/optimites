@@ -34,6 +34,7 @@ export type ContextShape = {
     setRotation: (scale: number) => void;
     setFlipped: (flipped: boolean) => void;
   };
+  scramble: () => void;
 };
 
 export default createContext<ContextShape>({
@@ -81,4 +82,5 @@ export default createContext<ContextShape>({
     setRotation: () => void 0,
     setFlipped: () => void 0,
   },
+  scramble: () => void 0,
 });
