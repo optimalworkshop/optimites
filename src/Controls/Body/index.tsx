@@ -8,7 +8,7 @@ const Body: React.FC<{ active: boolean }> = ({ active }) => {
   const {
     body: { gap, setGap, offset, setOffset },
   } = useContext(Context);
-  console.log(gap);
+
   return (
     <div
       role="tabpanel"
